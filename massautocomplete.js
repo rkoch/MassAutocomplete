@@ -263,6 +263,7 @@ angular.module('MassAutoComplete', [])
                 // prevent events from firing when the event was registered on
                 // the input itself.
                 e.stopPropagation();
+                e.preventDefault();
               }
 
               $scope.show_autocomplete = false;

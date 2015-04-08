@@ -104,7 +104,7 @@ angular.module('MassAutoComplete', [])
 
         value_watch = $scope.$watch(
           function () {
-            return ngmodel.$modelValue;
+            return ngmodel.$viewValue;
           },
           function (nv, ov) {
             // Prevent suggestion cycle when the value is the last value selected.

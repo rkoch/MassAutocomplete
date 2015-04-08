@@ -40,3 +40,6 @@
   outline: none;
   background-color: #e0eaff;
 }
+[mass-autocomplete] {
+  position: relative;
+}

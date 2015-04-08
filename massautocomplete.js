@@ -70,14 +70,15 @@ angular.module('MassAutoComplete', [])
       }
 
       function _position_autocomplete() {
-        var rect = current_element[0].getBoundingClientRect(),
-            scrollTop = $document[0].body.scrollTop || $document[0].documentElement.scrollTop || $window.pageYOffset,
-            scrollLeft = $document[0].body.scrollLeft || $document[0].documentElement.scrollLeft || $window.pageXOffset,
+        // This quick fix requires jQuery for now
+        // Find parent mass-autocomplete which has css `position: relative` applied.
+        var parRect = angular.element(current_element[0]).closest('[mass-autocomplete]')[0].getBoundingClientRect(),
+            curRect = current_element[0].getBoundingClientRect(),
             container = $scope.container[0];
 
-        container.style.top = rect.top + rect.height + scrollTop + 'px';
-        container.style.left = rect.left + scrollLeft + 'px';
-        container.style.width = rect.width + 'px';
+        container.style.top  = curRect.top - parRect.top + curRect.height + 'px';
+        container.style.left = curRect.left - parRect.left + 'px';
+        container.style.width = curRect.width + 'px';
       }
       var position_autocomplete = debounce(_position_autocomplete, user_options.debounce_position);
 
